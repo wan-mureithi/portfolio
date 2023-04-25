@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
 import styled, { css } from 'styled-components';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import Menu from './menu';
+import { IconLogo,IconHex } from './icons';
+import { navLinks } from '../config';
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -143,15 +147,103 @@ const ResumeLink = (
       Resume
     </a>
   );
-
+  export const navDelay = 1000;
+  export const loaderDelay = 2000;
 const Navbar = ({isHome}) => {
     const [isMounted, setIsMounted] = useState(!isHome);
   //const scrollDirection = useScrollDirection('down');
   const [scrolledToTop, setScrolledToTop] = useState(true);
+
+  const handleScroll = () => {
+    setScrolledToTop(window.pageYOffset < 50);
+  };
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsMounted(true);
+    }, 100);
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      clearTimeout(timeout);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const timeout = isHome ? loaderDelay : 0;
+  const fadeClass = isHome ? 'fade' : '';
+  const fadeDownClass = isHome ? 'fadedown' : '';
+  const Logo = (
+    <div className="logo" tabIndex="-1">
+      {isHome ? (
+        <a href="/" aria-label="home">
+          <div className="hex-container">
+            <IconHex />
+          </div>
+          <div className="logo-container">
+            <IconLogo />
+          </div>
+        </a>
+      ) : (
+        <Link to="/" aria-label="home">
+          <div className="hex-container">
+            <IconHex />
+          </div>
+          <div className="logo-container">
+            <IconLogo />
+          </div>
+        </Link>
+      )}
+    </div>
+  );
+
   return (
     <StyledHeader scrollDirection={''} scrolledToTop={scrolledToTop}>
         <StyledNav>
-            
+        
+          <>
+            <TransitionGroup component={null}>
+              {isMounted && (
+                <CSSTransition classNames={fadeClass} timeout={timeout}>
+                  <>{Logo}</>
+                </CSSTransition>
+              )}
+            </TransitionGroup>
+
+            <StyledLinks>
+              <ol>
+                <TransitionGroup component={null}>
+                  {isMounted &&
+                    navLinks &&
+                    navLinks.map(({ url, name }, i) => (
+                      <CSSTransition key={i} classNames={fadeDownClass} timeout={timeout}>
+                        <li key={i} style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
+                          <Link to={url}>{name}</Link>
+                        </li>
+                      </CSSTransition>
+                    ))}
+                </TransitionGroup>
+              </ol>
+
+              <TransitionGroup component={null}>
+                {isMounted && (
+                  <CSSTransition classNames={fadeDownClass} timeout={timeout}>
+                    <div style={{ transitionDelay: `${isHome ? navLinks.length * 100 : 0}ms` }}>
+                      {ResumeLink}
+                    </div>
+                  </CSSTransition>
+                )}
+              </TransitionGroup>
+            </StyledLinks>
+
+            <TransitionGroup component={null}>
+              {isMounted && (
+                <CSSTransition classNames={fadeClass} timeout={timeout}>
+                  <Menu />
+                </CSSTransition>
+              )}
+            </TransitionGroup>
+          </>
         </StyledNav>
     </StyledHeader>
   )

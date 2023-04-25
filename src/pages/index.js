@@ -1,6 +1,7 @@
 import * as React from "react"
 import styled from 'styled-components';
 import Layout from "../components/layout";
+import Hero from "../components/sections/hero";
 
 const StyledMainContainer = styled.main`
   counter-reset: section;
@@ -9,10 +10,9 @@ const StyledMainContainer = styled.main`
 const IndexPage = ({ location }) => {
   return (
     <Layout location={"/"}>
-     <StyledMainContainer>
-      <h1>
-        somethings to start with
-      </h1>
+     <StyledMainContainer className="fillHeight">
+      <Hero/>
+      
      </StyledMainContainer>
     </Layout>
   )

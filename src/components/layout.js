@@ -5,6 +5,7 @@ import Navbar from './navbar';
 import Footer from './footer';
 import theme from '../styles/theme';
 import GlobalStyle from '../styles/GlobalStyle';
+import Email from './email'
 
 const StyledContent = styled.div`
   display: flex;
@@ -25,6 +26,7 @@ const Layout = ({ children, location}) => {
           <StyledContent>
               <Navbar isHome={isHome} />
               <Socials isHome={isHome} />
+              <Email isHome={isHome} />
 
               <div id="content">
                 {children}
