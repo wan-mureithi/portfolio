@@ -1,8 +1,8 @@
-import React, {useRef} from 'react'
-import { useStaticQuery, graphql } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import styled from 'styled-components';
-import { Icon } from '../icons';
+import React, { useRef } from "react";
+import { useStaticQuery, graphql } from "gatsby";
+import styled from "styled-components";
+import { Icon } from "../icons";
+import { StaticImage } from "gatsby-plugin-image";
 
 const StyledProjectsGrid = styled.ul`
   ${({ theme }) => theme.mixins.resetList};
@@ -135,7 +135,7 @@ const StyledProject = styled.li`
         position: static;
 
         &:before {
-          content: '';
+          content: "";
           display: block;
           position: absolute;
           z-index: 0;
@@ -157,6 +157,7 @@ const StyledProject = styled.li`
     background-color: var(--light-navy);
     color: var(--light-slate);
     font-size: var(--fz-lg);
+    text-align: left;
 
     @media (max-width: 768px) {
       padding: 20px 0;
@@ -270,7 +271,7 @@ const StyledProject = styled.li`
       }
 
       &:before {
-        content: '';
+        content: "";
         position: absolute;
         width: 100%;
         height: 100%;
@@ -287,32 +288,31 @@ const StyledProject = styled.li`
 
     .img {
       border-radius: var(--border-radius);
-      mix-blend-mode: multiply;
-      filter: grayscale(100%) contrast(1) brightness(90%);
+
+      
 
       @media (max-width: 768px) {
         object-fit: cover;
         width: auto;
         height: 100%;
-        filter: grayscale(100%) contrast(1) brightness(50%);
+      
       }
     }
   }
 `;
 
 const Projects = () => {
-    const data = useStaticQuery(graphql`
-    query {
+  const data = useStaticQuery(graphql`
+    {
       projects: allMarkdownRemark(
-        filter: {
-          fileAbsolutePath: { regex: "/content/projects/" }
-        }
-        sort: { fields: [frontmatter___date], order: DESC }
+        filter: { fileAbsolutePath: { regex: "/content/projects/" } }
+        sort: { fields: [frontmatter___date], order: ASC }
       ) {
         edges {
           node {
             frontmatter {
               title
+              cover
               tech
               github
               external
@@ -326,76 +326,107 @@ const Projects = () => {
   const projects = data.projects.edges.filter(({ node }) => node);
   const revealTitle = useRef(null);
   const revealProjects = useRef([]);
-  
-
 
   return (
     <section id="projects">
-        <h2 className="numbered-heading" ref={revealTitle}>
+      <h2 className="numbered-heading" ref={revealTitle}>
         Some Things I’ve Built
       </h2>
       <StyledProjectsGrid>
-        {
-            projects && projects.map(( { node },i ) => {
-                const { frontmatter, html } = node;
-                const { external, title, tech, github, cover } = frontmatter;
-                const image = getImage(cover);
+        {projects &&
+          projects.map(({ node }, i) => {
+            const { frontmatter, html } = node;
+            const { external, title, tech, github, cover } = frontmatter;
+    
+            return (
+              <StyledProject
+                key={i}
+                ref={(el) => (revealProjects.current[i] = el)}
+              >
+                <div className="project-content">
+                  <div>
+                    <p className="project-overline">Featured Project</p>
 
-                return (
-                    <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
-                      <div className="project-content">
-                        <div>
-                          <p className="project-overline">Featured Project</p>
-      
-                          <h3 className="project-title">
-                            <a href={external}>{title}</a>
-                          </h3>
-      
-                          <div
-                            className="project-description"
-                            dangerouslySetInnerHTML={{ __html: html }}
-                          />
-      
-                          {tech.length && (
-                            <ul className="project-tech-list">
-                              {tech.map((tech, i) => (
-                                <li key={i}>{tech}</li>
-                              ))}
-                            </ul>
-                          )}
-      
-                          <div className="project-links">
-                            {/* {cta && (
+                    <h3 className="project-title">
+                      <a href={external}>{title}</a>
+                    </h3>
+
+                    <div
+                      className="project-description"
+                      dangerouslySetInnerHTML={{ __html: html }}
+                    />
+
+                    {tech.length && (
+                      <ul className="project-tech-list">
+                        {tech.map((tech, i) => (
+                          <li key={i}>{tech}</li>
+                        ))}
+                      </ul>
+                    )}
+
+                    <div className="project-links">
+                      {/* {cta && (
                               <a href={cta} aria-label="Course Link" className="cta">
                                 Learn More
                               </a>
                             )} */}
-                            {github && (
-                              <a href={github} aria-label="GitHub Link">
-                                <Icon name="GitHub" />
-                              </a>
-                            )}
-                            {external && (
-                              <a href={external} aria-label="External Link" className="external">
-                                <Icon name="External" />
-                              </a>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-      
-                      <div className="project-image">
-                        <a href={external ? external : github ? github : '#'}>
-                          <GatsbyImage image={image} alt={title} className="img" />
+                      {github && (
+                        <a href={github} aria-label="GitHub Link">
+                          <Icon name="GitHub" />
                         </a>
-                      </div>
-                    </StyledProject>
-                  );
-            })
-        }
+                      )}
+                      {external && (
+                        <a
+                          href={external}
+                          aria-label="External Link"
+                          className="external"
+                        >
+                          <Icon name="External" />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="project-image">
+                  <a href={external ? external : github ? github : "#"}>
+                    {title === "JavaSelfDrive" ? (
+                      <StaticImage
+                        className="img"
+                        src={"../../images/jsd.png"}
+                        width={500}
+                        quality={95}
+                        formats={["AUTO", "WEBP", "AVIF"]}
+                        alt={title}
+                      />
+                    ) : title === "Nash Treasury" ? (
+                      <StaticImage
+                        className="img"
+                        src={"../../images/treasury.png"}
+                        width={500}
+                        quality={95}
+                        formats={["AUTO", "WEBP", "AVIF"]}
+                        alt={title}
+                      />
+                    ) : (
+                      <StaticImage
+                        className="img"
+                        src={"../../images/qtb.png"}
+                        width={500}
+                        quality={95}
+                        formats={["AUTO", "WEBP", "AVIF"]}
+                        alt={title}
+                      />
+                    )}
+                    {/* <GatsbyImage image={cover} alt={title} className="img"/> */}
+                  </a>
+                </div>
+              </StyledProject>
+            );
+          })}
       </StyledProjectsGrid>
     </section>
-  )
-}
+  );
+};
 
-export default Projects
+export default Projects;

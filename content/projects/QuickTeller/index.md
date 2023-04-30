@@ -1,13 +1,21 @@
 ---
-date: '3'
+date: '2022-04-21'
 title: 'QuickTeller for Business'
 github: 'https://github.com/'
-external: 'https://www.javaselfdrive.com/'
-cover: './qtb-2.png'
+external: 'https://business.quickteller.com/'
+cover: ./qtb.png
 tech:
   - React
   - Material UI
+  - Axios
+  - Jest
 showInProjects: true
 ---
 
-Simple website to display some of my favorite font pairings combined with some fun lorem ipsum variations found on the web.
+A platform for any business to manage their business by handling the revenue channels.
+Worked as the frontend developer.
+- Interpreted the UI designs on Adobe XD, came up with my tasks on Trello and noted the APIs needed.
+- Developed UI using React and Material UI.
+- Consumed API endpoints using Axios.
+- Wrote unit tests using Jest.
+- Deployed version 2.0 using Docker.
