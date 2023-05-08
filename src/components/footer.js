@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { socialMedia } from '../config';
 import { Icon } from './icons';
@@ -83,7 +83,6 @@ const Footer = () => {
             </ul>
         </StyledSocialLinks>
         <StyledCredit tabIndex={"-1"}>
-        <div>Built by &amp; Footer</div>
         </StyledCredit>
     </StyledFooter>
   )

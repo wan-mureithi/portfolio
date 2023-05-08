@@ -71,7 +71,7 @@ const Hero = () => {
             <CSSTransition classNames="fadeup" timeout={loaderDelay}>
             <div style={{ transitionDelay: '200ms' }}>
                 <p> I'm a software engineer specializing in building websites and web applications. 
-                    Currently based in Nairobi, Kenya. Currently open for work
+                    Currently based in Nairobi, Kenya and open for work.
                 </p>
             </div>
             </CSSTransition>

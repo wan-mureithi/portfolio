@@ -143,7 +143,7 @@ In addition, I’ve sharpened my technical skills from documentation to testing 
         <div className='wrapper'>
         <StaticImage
               className="img"
-              src="../../images/avatar.avif"
+              src="../../images/Profile.png"
               width={500}
               quality={95}
               formats={['AUTO', 'WEBP', 'AVIF']}

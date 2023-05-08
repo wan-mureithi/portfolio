@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import { navLinks } from "../config";
-//import { KEY_CODES } from '@utils';
-//import { useOnClickOutside } from '@hooks';
 
 const StyledMenu = styled.div`
   display: none;
@@ -163,33 +161,7 @@ const Menu = () => {
 
   const buttonRef = useRef(null);
   const navRef = useRef(null);
-  const onResize = e => {
-    if (e.currentTarget.innerWidth > 768) {
-      setMenuOpen(false);
-    }
-  };
 
-let menuFocusables;
-  let firstFocusableEl;
-  let lastFocusableEl;
-
-  const setFocusables = () => {
-    menuFocusables = [
-      buttonRef.current,
-      ...Array.from(navRef.current.querySelectorAll("a")),
-    ];
-    firstFocusableEl = menuFocusables[0];
-    lastFocusableEl = menuFocusables[menuFocusables.length - 1];
-  };
-  useEffect(() => {
-    window.addEventListener("resize", onResize);
-
-    setFocusables();
-
-    return () => {
-      window.removeEventListener("resize", onResize);
-    };
-  }, []);
   const wrapperRef = useRef();
   return (
     <StyledMenu>
@@ -222,7 +194,7 @@ let menuFocusables;
               </ol>
             )}
 
-            <a href="/resume.pdf" className="resume-link">
+            <a href="/Esther_Resume.pdf" className="resume-link">
               Resume
             </a>
           </nav>
