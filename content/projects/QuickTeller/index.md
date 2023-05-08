@@ -1,7 +1,6 @@
 ---
-date: '2022-04-21'
+date: '2021-11-21'
 title: 'QuickTeller for Business'
-github: 'https://github.com/'
 external: 'https://business.quickteller.com/'
 cover: ./qtb.png
 tech:

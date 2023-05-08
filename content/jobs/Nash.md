@@ -3,11 +3,12 @@ date: '2023-12-21'
 title: 'Software Engineer'
 company: 'Nash Global'
 location: 'Nairobi, KE'
-range: 'July - December 2017'
+range: 'May 2021 - April 2023'
 url: 'https://getnashglobal.com/'
 ---
 
-- Developed and styled an interactive in-house web application to facilitate stock taking for engineering team.
-- Documented the Easyweigh system to help users get familiarized with the system.
-- Assisted in facilitating client setup with the Easyweigh systems. Involved helping clients install MSSQL Server.
-- Interacted with the Easyweigh ERP databases to run queries as per requests given by support.
+- Analysed designs provided using Figma and developed reusable components using React and various UI libraries like Material and Styled Components.
+- Owned various business features from ideation to documentation to development and testing.
+- API testing and integration using Swagger UI/Postman and Redux toolkit.
+- Undertook workflows using Agile. Documented tasks on Jira, had bi-weekly standups and documented features on Confluence.
+- Managed frontend environment and diagnosed issues on Azure.

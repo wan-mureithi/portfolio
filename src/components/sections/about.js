@@ -122,15 +122,16 @@ const About = () => {
         <StyledText>
             <div>
                 <p>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                    It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. I
+                Creating things that are live on the internet has always been a passion of mine. Simply started by creating posters on Canva in 2015, then realised I could do more with Websites using Wordpress,
+                 which had easy learning curve but was rather rigid to change.
+                 Therefore, I graduated to HTML, CSS and Javascript.
+
                 </p>
                 <p>
-                It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
-                 Richard McClintock, a Latin professor at <a href="https://google.com">Hampden-Sydney College in Virginia</a>, 
-                 looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, 
-                 discovered the undoubtable source.
+                Fast forward to today, I’ve had the pleasure of working at two start-ups in different industries, 
+               <a href="http://octagon.co.ke/site/">agri-tech</a> and fintech as well as a <a href="https://www.interswitchgroup.com/kenya/home">multi-national fintech company</a>. 
+                I believe in understanding the problem first before jumping into solutions and implementation. This has made me detail-oriented and focused. My experiences have me work on my soft skills like team-work and presentation. 
+In addition, I’ve sharpened my technical skills from documentation to testing to coding using various technologies. 
                 </p>
                 <p>Here are a few technologies I’ve been working with recently:</p>
             </div>

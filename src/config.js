@@ -7,16 +7,12 @@ module.exports = {
         url: 'https://github.com/wan-mureithi',
       },
       {
-        name: 'Instagram',
-        url: 'https://www.instagram.com',
-      },
-      {
         name: 'Twitter',
         url: 'https://twitter.com',
       },
       {
         name: 'Linkedin',
-        url: 'https://www.linkedin.com',
+        url: 'https://www.linkedin.com/in/esther-mureithi-34406311b/',
       },
       {
         name: 'Codepen',

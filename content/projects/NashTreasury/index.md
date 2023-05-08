@@ -1,5 +1,5 @@
 ---
-date: '2021-04-21'
+date: '2022-12-21'
 title: 'Nash Treasury'
 cover: ./jsd.png
 external: 'https://www.javaselfdrive.com/'

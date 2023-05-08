@@ -3,7 +3,7 @@ date: '2018-12-21'
 title: 'Software developer Intern'
 company: 'Octagon Data Systems'
 location: 'Nairobi, KE'
-range: 'July - December 2017'
+range: 'July - December 2018'
 url: 'http://octagon.co.ke/site/'
 ---
 
