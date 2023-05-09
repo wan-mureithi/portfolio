@@ -83,6 +83,17 @@ const Footer = () => {
             </ul>
         </StyledSocialLinks>
         <StyledCredit tabIndex={"-1"}>
+          Design Credits go to Brittany Chang 🥳
+          <div className="github-stats">
+              <span>
+                <Icon name="Star" />
+                <span>3k</span>
+              </span>
+              <span>
+                <Icon name="Fork" />
+                <span>6k</span>
+              </span>
+            </div>
         </StyledCredit>
     </StyledFooter>
   )
