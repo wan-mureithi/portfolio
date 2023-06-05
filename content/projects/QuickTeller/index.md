@@ -1,5 +1,5 @@
 ---
-date: '2021-11-21'
+date: '2022-11-21'
 title: 'QuickTeller for Business'
 external: 'https://business.quickteller.com/'
 cover: ./qtb.png
